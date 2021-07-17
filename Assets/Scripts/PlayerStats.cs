@@ -53,15 +53,25 @@ public class PlayerStats : MonoBehaviour
 
     public bool Equip (int index)
     {
+        Debug.Log(index);
         if (inventory[index]!=null)
         {
-            inventory.Add(bodyItem);
+            
             if (inventory[index].itemType == ItemType.Body)
             {
+                inventory.Add(bodyItem);
                 bodyItem = inventory[index];
+                playerBody.sprite = bodyItem.itemEquipSprite;
                 onEquipBody.Invoke();
                 
                 //Update Inventory and Equipment slots
+            }
+            else
+            {
+                inventory.Add(headItem);
+                headItem = inventory[index];
+                playerHead.sprite = headItem.itemEquipSprite;
+                onEquipHead.Invoke();
             }
             inventory.RemoveAt(index);
             onInventoryChanged.Invoke();
@@ -77,12 +87,17 @@ public class PlayerStats : MonoBehaviour
     public void OpenInventory()
     {
         if (inventoryPanel.gameObject.activeSelf)
+        {
             inventoryPanel.gameObject.SetActive(false);
+            onInventoryChanged.RemoveListener(RefreshInventory);
+        }
         else
         {
             RefreshInventory();
             inventoryPanel.gameObject.SetActive(true);
-            
+            onInventoryChanged.AddListener(RefreshInventory);
+
+
         }
     }
 
