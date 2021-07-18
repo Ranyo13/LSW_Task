@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     public UnityEvent onEquipHead;
     public UnityEvent onEquipBody;
     public Transform inventoryItemOption;
+    
 
     public int coins;
 
