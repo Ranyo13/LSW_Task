@@ -36,6 +36,7 @@ public class PlayerStats : MonoBehaviour
     {
         coins += value;
         coinsText.text = coins.ToString();
+        FindObjectOfType<AudioManager>().Play("BuyItem");
     }
 
     public bool RemoveCoins (int value)
@@ -44,6 +45,7 @@ public class PlayerStats : MonoBehaviour
         {
             coins -= value;
             coinsText.text = coins.ToString();
+            FindObjectOfType<AudioManager>().Play("SellItem");
             return true;
 
         }
@@ -64,7 +66,7 @@ public class PlayerStats : MonoBehaviour
                 bodyItem = inventory[index];
                 playerBody.sprite = bodyItem.itemEquipSprite;
                 onEquipBody.Invoke();
-                
+                FindObjectOfType<AudioManager>().Play("Equip");
                 //Update Inventory and Equipment slots
             }
             else
@@ -73,6 +75,7 @@ public class PlayerStats : MonoBehaviour
                 headItem = inventory[index];
                 playerHead.sprite = headItem.itemEquipSprite;
                 onEquipHead.Invoke();
+                FindObjectOfType<AudioManager>().Play("Equip2");
             }
             inventory.RemoveAt(index);
             onInventoryChanged.Invoke();

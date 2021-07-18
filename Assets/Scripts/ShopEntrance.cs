@@ -45,8 +45,9 @@ public class ShopEntrance : MonoBehaviour
         {
             playerStats = collision.GetComponent<PlayerStats>();
             OpenBuyItemsMenu();
-           
-            
+            FindObjectOfType<AudioManager>().Play("EnterShop");
+
+
 
 
         }
@@ -56,6 +57,7 @@ public class ShopEntrance : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CloseMenu();
+            FindObjectOfType<AudioManager>().Play("LeaveShop");
         }
     }
 
@@ -155,6 +157,21 @@ public class ShopEntrance : MonoBehaviour
             itemOptionDuplicate.Find("Button").GetComponent<Button>().onClick.AddListener(() => SellItem(listenerInput));
         }
 
+    }
+
+    public void PlaySwitchSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Switch");
+    }
+
+    public void PlayClickSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Click");
+    }
+
+    public void PlayExitSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Exit");
     }
 
 }
