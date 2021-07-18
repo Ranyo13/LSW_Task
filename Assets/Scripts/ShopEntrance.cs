@@ -46,6 +46,7 @@ public class ShopEntrance : MonoBehaviour
             playerStats = collision.GetComponent<PlayerStats>();
             OpenBuyItemsMenu();
             FindObjectOfType<AudioManager>().Play("EnterShop");
+            FindObjectOfType<AudioManager>().Play("Greeting");
 
 
 
@@ -58,6 +59,7 @@ public class ShopEntrance : MonoBehaviour
         {
             CloseMenu();
             FindObjectOfType<AudioManager>().Play("LeaveShop");
+            
         }
     }
 

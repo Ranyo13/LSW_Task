@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+
+    public static AudioManager instance;
     [System.Serializable]
     public class Sound
     {
@@ -20,6 +22,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -33,6 +44,8 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = sounds.Find(sound => sound.name == name);
         s.source.Play();
+        if (name.Equals("Background"))
+            s.source.loop = true;
 
     }
     public void Stop(string name)
