@@ -141,6 +141,13 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void PlayFootstepSound()
+    {
+        string[] names = { "Walk1", "Walk2", "Walk3" };
+        int random = Random.Range(0, 3);
+        FindObjectOfType<AudioManager>().Play(names[random]);
+    }
+
     // Start is called before the first frame update
     //void EquipArmor (BodyItem inBodyItem)
     //{
