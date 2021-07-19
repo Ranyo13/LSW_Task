@@ -107,7 +107,7 @@ public class ShopEntrance : MonoBehaviour
     {
         buyingItemsPanel.gameObject.SetActive(false);
         sellingItemsPanel.gameObject.SetActive(false);
-        shopOptionsPanel.gameObject.SetActive(false);
+        //shopOptionsPanel.gameObject.SetActive(false);
     }
 
     public void OpenBuyItemsMenu()
@@ -115,7 +115,7 @@ public class ShopEntrance : MonoBehaviour
         playerStats.onInventoryChanged.RemoveListener(OpenSellItemsMenu);
         buyingItemsPanel.gameObject.SetActive(true);
         sellingItemsPanel.gameObject.SetActive(false);
-        shopOptionsPanel.gameObject.SetActive(true);
+        //shopOptionsPanel.gameObject.SetActive(true);
         Transform content = buyingItemsPanel.Find("Scroll View/Viewport/Content");
         // Updates UI (No need for a function since it's always constant)
         buyButton.interactable = false;
