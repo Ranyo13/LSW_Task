@@ -65,7 +65,7 @@ public class ShopEntrance : MonoBehaviour
 
     public void BuyItem(int id)
     {
-        if (playerStats.RemoveCoins(shopItems[id].cost))
+        if (playerStats.inventory.Count < 4 && playerStats.RemoveCoins(shopItems[id].cost) )
         {
             Item newItem = new Item();
             newItem = shopItems[id];
